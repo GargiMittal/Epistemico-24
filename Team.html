@@ -3,153 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Section</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Responsive Team Section</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* General reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-/* Body styling */
-body {
-    background-color: #10131d;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+        body {
+            background-color: #020d33;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-/* Header */
-header h1 {
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #ff6ec7;
-    text-shadow: 2px 2px 5px rgba(255, 110, 199, 0.8);
-}
+        header h1 {
+            margin-bottom: 30px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff6ec7;
+            text-shadow: 2px 2px 5px rgba(255, 110, 199, 0.8);
+        }
 
-/* Team section */
-.team {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
+        .team {
+            display: grid;
+            gap: 20px;
+            width: 100%;
+            justify-content: center;
+        }
 
-/* Member card */
-.member {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    overflow: hidden;
-    background: linear-gradient(145deg, #1e1f33, #282c44);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        /* Responsive grid layout */
+        @media (min-width: 992px) {
+            .team {
+                grid-template-columns: repeat(4, 1fr); /* 4 members in a row */
+            }
+        }
 
-/* Member hover effect */
-.member:hover {
-    transform: translateY(-10px); /* Lifts the card slightly */
-    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.8);
-}
+        @media (min-width: 768px) and (max-width: 991px) {
+            .team {
+                grid-template-columns: repeat(2, 1fr); /* 2 members in a row */
+            }
+        }
 
-/* Image container*/
-.image-container img{
-    width:500px;
-}
+        @media (max-width: 767px) {
+            .team {
+                grid-template-columns: 1fr; /* 1 member in a row */
+            }
+        }
 
-/* Gradient overlay */
-.image-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
-    z-index: 1;
-}
+        .member {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #1e1f33, #282c44);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 100%;
+            width: 100%; /* Flexible width */
+           /* border-radius: 10px;*/
+        }
 
-/* Name and role container */
-.member-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-   /* background-color: #222d42; /* Dark background for content */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    z-index: 2;
-    transition: opacity 0.3s ease-in-out;
-}
+        .member:hover {
+            transform: translateY(-10px);
+            box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.8);
+        }
 
-/* Name styling */
-.member-content h2 {
-    font-size: 30px; /* Larger font size for the name */
-    color: #ff6ec7;
-    font-weight: bold;
-    text-shadow: 0 0 8px #ff6ec7, 0 0 15px rgba(255, 110, 199, 0.6); /* Glowing effect */
-}
+        .image-container img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            /*border-top-left-radius: 10px;*/
+           /* border-top-right-radius: 10px;*/
+        }
 
-/* Role styling */
-.member-content p {
-    font-size: 16px;
-    color: #bdbdbd;
-}
+        .member-content {
+            padding: 15px;
+            background-color: #222d42;
+        }
+        
 
-/* Hide name and role on hover */
-.member:hover .member-content {
-    opacity: 0;
-}
+        .member-content h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-bottom: 10px;
+            color: white;
+        }
 
-/* Social icons */
-.social-icons {
-    position: absolute;
-    bottom: 10%; /* Start from the bottom */
-    left: 50%;
-    transform: translate(-50%, 50px); /* Slide from the bottom */
-    display: flex;
-    gap: 20px; /* Horizontal layout */
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth opacity and movement */
-}
+        .member-content p {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-weight: bold;
+            color: rgb(207, 77, 99);
+        }
 
-.social-icons a {
-    color: white;
-    font-size: 24px; /* Larger icon size */
-    background: linear-gradient(145deg, #6a5acd, #483d8b); /* Elegant gradient */
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    padding: 12px;
-    text-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-}
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-.social-icons a:hover {
-    transform: scale(1.2) rotate(15deg); /* Scale and rotate effect */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(106, 90, 205, 0.6);
-}
+        .social-icons a {
+            color: white;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+           /* background: linear-gradient(145deg, #6a5acd, #483d8b);*/
+           background: none;
+           border-radius: 10%;
+            padding: 10px;
+           /* transition: transform 0.3s ease, box-shadow 0.3s ease;*/
+        }
 
-/* Show icons on hover */
-.member:hover .social-icons {
-    opacity: 1;
-    transform: translate(-50%, 0); /* Slide to midway */
-}
+        .social-icons a:hover {
+          /*  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);*/
+         /* box-shadow: #bdbdbd;*/
+         box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(106, 90, 205, 0.6);
+        }
 
-/* Footer */
-footer {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #bdbdbd;
-}
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #bdbdbd;
+        }
     </style>
 </head>
 <body>
@@ -158,27 +133,7 @@ footer {
     </header>
     <main>
         <section class="team">
-            <h2>Our Dedicated Members</h2>
-            <p>We are proud to introduce our talented team, who work tirelessly to make our events successful.</p>
-            
-            <!-- Team Member 1 -->
-            <!--<div class="member">
-                <div class="image-container">
-                    <img src="team-member1.jpg" alt="Team Member">
-                </div>
-                <div class="member-content">
-                    <h2>Sahil Dhamore</h2>
-                    <p>Sponsorship Head</p>
-                </div>
-                <div class="social-icons">
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
-             Add more members similarly -->
-
+            <!-- Dynamic team cards will be added via JavaScript -->
         </section>
     </main>
     <footer>
@@ -186,73 +141,58 @@ footer {
     </footer>
     <script>
         // Team data
-const team = [
-    {
-        name: "John Doe",
-        role: "Event Coordinator",
-        email: "john.doe@example.com",
-        linkedin: "https://linkedin.com/in/johndoe",
-        facebook: "https://facebook.com/johndoe",
-        image: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-        name: "Jane Smith",
-        role: "Sponsorship Head",
-        email: "jane.smith@example.com",
-        linkedin: "https://linkedin.com/in/janesmith",
-        facebook: "https://facebook.com/janesmith",
-        image: "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-        name: "Alice Johnson",
-        role: "Marketing Manager",
-        email: "alice.johnson@example.com",
-        linkedin: "https://linkedin.com/in/alicejohnson",
-        facebook: "https://facebook.com/alicejohnson",
-        image: "https://randomuser.me/api/portraits/women/45.jpg",
-    },
-    {
-        name: "Bob Brown",
-        role: "Technical Lead",
-        email: "bob.brown@example.com",
-        linkedin: "https://linkedin.com/in/bobbrown",
-        facebook: "https://facebook.com/bobbrown",
-        image: "https://randomuser.me/api/portraits/men/46.jpg",
-    },
-    // Add more members here
-];
+        const team = [
+            {
+                name: "John Doe",
+                role: "Event Coordinator",
+                email: "john.doe@example.com",
+                linkedin: "https://linkedin.com/in/johndoe",
+                image: "https://randomuser.me/api/portraits/men/32.jpg",
+            },
+            {
+                name: "Jane Smith",
+                role: "Sponsorship Head",
+                email: "jane.smith@example.com",
+                linkedin: "https://linkedin.com/in/janesmith",
+                image: "https://randomuser.me/api/portraits/women/44.jpg",
+            },
+            {
+                name: "Alice Johnson",
+                role: "Marketing Manager",
+                email: "alice.johnson@example.com",
+                linkedin: "https://linkedin.com/in/alicejohnson",
+                image: "https://randomuser.me/api/portraits/women/45.jpg",
+            },
+            {
+                name: "Bob Brown",
+                role: "Technical Lead",
+                email: "bob.brown@example.com",
+                linkedin: "https://linkedin.com/in/bobbrown",
+                image: "https://randomuser.me/api/portraits/men/46.jpg",
+            },
+        ];
 
-// Select the container
-const teamContainer = document.querySelector('.team');
+        const teamContainer = document.querySelector('.team');
 
-// Function to create a team member card
-function createMemberCard(member) {
-    const memberDiv = document.createElement('div');
-    memberDiv.classList.add('member');
-
-    memberDiv.innerHTML = `
-        <div class="image-container">
-            <img src="${member.image}" alt="${member.name}">
-            <div class="social-icons">
-                <a href="${member.linkedin}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="${member.facebook}" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="mailto:${member.email}" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-        <div class="member-content">
-            <h2>${member.name}</h2>
-            <p>${member.role}</p>
-        </div>
-    `;
-
-    return memberDiv;
-}
-
-// Create and append team member cards dynamically
-team.forEach(member => {
-    const memberCard = createMemberCard(member);
-    teamContainer.appendChild(memberCard);
-});
+        // Create team cards dynamically
+        team.forEach(member => {
+            const memberCard = `
+                <div class="member">
+                    <div class="image-container">
+                        <img src="${member.image}" alt="${member.name}">
+                    </div>
+                    <div class="member-content">
+                        <h2>${member.name}</h2>
+                        <p>${member.role}</p>
+                        <div class="social-icons">
+                            <a href="${member.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:${member.email}"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            teamContainer.innerHTML += memberCard;
+        });
     </script>
 </body>
 </html>
