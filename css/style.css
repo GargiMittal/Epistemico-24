@@ -12,6 +12,10 @@
   -ms-flex-pack: start;
   justify-content: start;
 }
+.small-logo {
+  width: 180px;
+  height: auto;
+}
 
 /* Normal desktop :1200px. */
 /* Normal desktop :992px. */
@@ -26,10 +30,11 @@
 /* Large Mobile :480px. */
 /* line 6, ../../Arafath/CL/December/236. Event-02/HTML/scss/theme-default.scss */
 body {
-  font-family: "Muli", sans-serif;
+  font-family: 'FantasyPersonal';
   font-weight: normal;
   font-style: normal;
 }
+
 
 /* line 25, ../../Arafath/CL/December/236. Event-02/HTML/scss/theme-default.scss */
 .img {
@@ -1481,6 +1486,22 @@ h3 {
   }
 }
 
+/* Import the custom font */
+@font-face {
+  font-family: 'FantasyPersonal';
+  src: url('C:/Users/Pragati/Downloads/Epistemico-24/fonts/fantasy personal use.woff2') format('woff2');
+}
+
+/* Apply the font to the text in the slider */
+.slider_text span,
+.slider_text h3,
+.slider_text p {
+  font-family: 'FantasyPersonal', sans-serif; /* Fallback to sans-serif */
+  color: #fff; /* Adjust text color if needed */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional for better visibility */
+}
+
+
 /* line 1, ../../Arafath/CL/December/236. Event-02/HTML/scss/_slider.scss */
 .slider_bg_1 {
   background-image: url(../img/banner/banner.png);
@@ -2003,6 +2024,26 @@ h3 {
   position: relative;
   z-index: 11;
 }
+
+/* Make the video container responsive */
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin: 0 auto;
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 /* line 41, ../../Arafath/CL/December/236. Event-02/HTML/scss/_about.scss */
 .about_area .about_thumb .thumb_inner img {

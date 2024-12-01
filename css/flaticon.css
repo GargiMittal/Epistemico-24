@@ -4,7 +4,8 @@
   	*/
 
 @font-face {
-  font-family: "Flaticon";
+  font-family: 'FantasyPersonal';
+  src: url('../fonts/fantasy personal use.woff2') format('woff2');
   src: url("../fonts/Flaticon.eot");
   src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
        url("../fonts/Flaticon.woff2") format("woff2"),
